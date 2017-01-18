@@ -6,6 +6,8 @@ import {fitBounds} from 'google-map-react/utils';
 import Photo from '../photo';
 import api from '../../api';
 
+const googleOptions = {key: 'AIzaSyChlIkaK9O6De9HC4abViqJ0GEKcxUaHSI'}
+
 class PhotoMap extends Component {
     state = {};
 
@@ -51,7 +53,7 @@ class PhotoMap extends Component {
         if(!photos) {
             return <div style={{width: '100%', height: '100%'}}></div>
         }
-        return (<GoogleMap center={center} zoom={zoom}>
+        return (<GoogleMap center={center} zoom={zoom} bootstrapUrlKeys={googleOptions}>
             {photos && photos.map(photo => <Photo lat={photo.location.latitude} lng={photo.location.longitude} photo={photo} />)}
         </GoogleMap>)
     }
