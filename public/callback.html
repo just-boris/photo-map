@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo Map - Auth</title>
+  </head>
+  <body>
+    <p>You will leave this page shortly...</p>
+    <p>If it doesn't happen, <a href="/">click here</a></p>
+    <script>
+        function getHashValue(key) {
+            var matches = location.hash.match(new RegExp(key+'=([^&]*)'));
+            return matches ? matches[1] : null;
+        }
+
+        localStorage.setItem('instagram-token', getHashValue('access_token'));
+        window.close();
+    </script>
+  </body>
+</html>
