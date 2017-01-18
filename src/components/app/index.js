@@ -3,13 +3,16 @@ import PhotoMap from '../photo-map';
 import api from '../../api';
 
 const clientId = 'e6e4168f12aa4bebbe95c6d10802675e';
-const redirectUri = 'http://localhost:3000/callback.html';
+const redirectUri = `${location.href}callback.html`;
 
 export default class App extends Component {
     state = {};
 
     onSignClick = () => {
-        window.open(api.auth(clientId, redirectUri));
+        const newWindow = window.open(api.auth(clientId, redirectUri));
+        newWindow.addEventListener('unload', () => {
+            setTimeout(() => location.reload());
+        });
     };
 
     componentDidMount() {

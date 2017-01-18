@@ -16,7 +16,7 @@ const styles = {
 };
 
 function Place({photo, sheet: {classes}}) {
-    return <img className={classes.marker} src={photo.images.thumbnail.url} />
+    return <img role="presentation" className={classes.marker} src={photo.images.thumbnail.url} />
 }
 
 export default injectSheet(styles)(Place);

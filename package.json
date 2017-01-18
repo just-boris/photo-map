@@ -2,8 +2,10 @@
   "name": "instagram-map",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://catatron.com/photo-map",
   "devDependencies": {
-    "@just-boris/preact-scripts": "0.8.5"
+    "@just-boris/preact-scripts": "0.8.5",
+    "gh-pages": "^0.12.0"
   },
   "dependencies": {
     "google-map-react": "^0.22.3",
@@ -17,6 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "release": "gh-pages -d build"
   }
 }
