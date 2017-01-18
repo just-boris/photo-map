@@ -11,6 +11,7 @@
     "google-map-react": "^0.22.3",
     "jsonp": "^0.2.1",
     "jss": "^6.2.0",
+    "points-cluster": "^0.1.4",
     "preact": "^7.1.0",
     "preact-compat": "^3.10.0",
     "react-jss": "^5.2.0"
