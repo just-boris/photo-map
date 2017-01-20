@@ -9,10 +9,7 @@ export default class App extends Component {
     state = {};
 
     onSignClick = () => {
-        const newWindow = window.open(api.auth(clientId, redirectUri));
-        newWindow.addEventListener('unload', () => {
-            setTimeout(() => location.reload());
-        });
+        window.open(api.auth(clientId, redirectUri));
     };
 
     componentDidMount() {

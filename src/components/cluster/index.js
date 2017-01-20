@@ -5,8 +5,8 @@ const thumbSize = 40;
 const styles = {
   cluster: {
     position: "relative",
-    top: -thumbSize / 2,
-    left: -thumbSize / 2,
+    top: (-thumbSize) / 2,
+    left: (-thumbSize) / 2,
     width: thumbSize,
     height: thumbSize,
     border: "1px solid #fff",
@@ -25,15 +25,17 @@ const styles = {
   }
 };
 
-function Cluster({ cluster, sheet: { classes } }) {
+function Cluster({ cluster, onClick, sheet: { classes } }) {
   return (
-    <div className={classes.cluster}>
-      <img role="presentation" className={classes.photo} src={
-        cluster.photos[0].images.thumbnail.url
-      } />
+    <div className={classes.cluster} onClick={() => onClick(cluster)}>
+      <img
+        role="presentation"
+        className={classes.photo}
+        src={cluster.photos[0].photo.images.thumbnail.url}
+      />
       <span className={classes.counter}>{cluster.numPoints}</span>
     </div>
   );
 }
 
-export default injectSheet(styles)(Cluster)
+export default injectSheet(styles)(Cluster);

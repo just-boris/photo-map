@@ -15,6 +15,7 @@
         }
 
         localStorage.setItem('instagram-token', getHashValue('access_token'));
+        window.opener.location.reload();
         window.close();
     </script>
   </body>
