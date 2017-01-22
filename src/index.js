@@ -1,8 +1,14 @@
-import {h, render} from 'preact';
-import App from './components/app';
-import './index.css';
+import { h, render } from "preact";
+import Router from "preact-router";
+import { createHashHistory } from "history";
+import IndexPage from "./pages/index";
+import MapPage from "./pages/map";
+import "./index.css";
 
 render(
-  <App />,
-  document.getElementById('root')
+  <Router history={createHashHistory()}>
+    <IndexPage path="/" />
+    <MapPage path="/map" />
+  </Router>,
+  document.getElementById("root")
 );

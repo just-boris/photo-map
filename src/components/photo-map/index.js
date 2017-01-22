@@ -1,12 +1,10 @@
 import { h, Component } from "preact";
 import { findDOMNode } from "preact-compat";
-import jsonp from "jsonp";
 import GoogleMap from "google-map-react";
 import { fitBounds } from "google-map-react/utils";
 import supercluster from "points-cluster";
 import Photo from "../photo";
 import Cluster from "../cluster";
-import api from "../../api";
 
 const googleOptions = { key: "AIzaSyAnJ6-RtNkoT-nOVdNHbM5ZofCBGBc6zWo" };
 
@@ -16,21 +14,7 @@ class PhotoMap extends Component {
   makeClusters = null;
 
   componentDidMount() {
-    jsonp(api.media(this.props.token), (err, resp) => {
-      if (resp) {
-        this.onPhotosLoad(
-          resp.data.map(photo => ({
-            photo,
-            lat: photo.location.latitude,
-            lng: photo.location.longitude
-          }))
-        );
-      }
-    });
-  }
-
-  onPhotosLoad(photos) {
-
+    const { photos } = this.props;
     this.bounds = this.getPhotosBounds(photos);
     this.makeClusters = supercluster(photos, {
       minZoom: 3,
@@ -85,7 +69,7 @@ class PhotoMap extends Component {
   onClusterClick = cluster => {
     const bounds = this.getPhotosBounds(cluster.photos);
     const { center, zoom } = this.fitBounds(bounds);
-    this.setState({center, zoom});
+    this.setState({ center, zoom });
   };
 
   render() {

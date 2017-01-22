@@ -1,8 +1,22 @@
-const base = 'https://api.instagram.com';
+const base = "https://api.instagram.com";
+const clientId = "e6e4168f12aa4bebbe95c6d10802675e";
+const redirectUri = `http://${location.host}${location.pathname}callback.html`;
 
-const tokenized = url => token => `${url}?access_token=${token}`
+const makeUrl = (url, token) => `${base}${url}?access_token=${token}`;
 
-export default {
-    auth: (clientId, redirectUri) => base + `/oauth/authorize/?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token`,
-    media: tokenized(base + '/v1/users/self/media/recent/')
+function ApiClient() {
+  let token = localStorage.getItem("instagram-token");
+  this.auth = () =>
+    base +
+      `/oauth/authorize/?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=public_content`;
+  this.media = () => makeUrl("/v1/users/self/media/recent/", token);
+  // media: tokenized(base + '/v1/users/281422821/media/recent/')
+  this.search = query => makeUrl(`/v1/users/search`) + `&q=${query}`;
+  this.getToken = () => token;
+  this.setToken = value => {
+    localStorage.setItem("instagram-token", value);
+    token = value;
+  };
 }
+
+export default new ApiClient();
