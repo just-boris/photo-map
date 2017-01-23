@@ -10,8 +10,9 @@ function ApiClient() {
     base +
       `/oauth/authorize/?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=token&scope=public_content`;
   this.media = () => makeUrl("/v1/users/self/media/recent/", token);
-  // media: tokenized(base + '/v1/users/281422821/media/recent/')
-  this.search = query => makeUrl(`/v1/users/search`) + `&q=${query}`;
+  // this.media = () => makeUrl("/v1/users/281422821/media/recent/", token);
+  // this.media = () => makeUrl("/v1/users/178703389/media/recent/", token);
+  this.search = query => makeUrl("/v1/users/search", token) + `&q=${query}`;
   this.getToken = () => token;
   this.setToken = value => {
     localStorage.setItem("instagram-token", value);

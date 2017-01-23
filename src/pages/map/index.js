@@ -43,13 +43,15 @@ class MapPage extends Component {
     }
 
     jsonp(api.media(), (err, resp) => {
-      if (resp) {
+      if (resp && resp.data) {
         this.setState({
-          photos: resp.data.map(photo => ({
-            photo,
-            lat: photo.location.latitude,
-            lng: photo.location.longitude
-          }))
+          photos: resp.data
+            .filter(photo => photo.location)
+            .map(photo => ({
+              photo,
+              lat: photo.location.latitude,
+              lng: photo.location.longitude
+            }))
         });
       }
     });
