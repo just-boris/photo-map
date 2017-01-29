@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
 import PhotoMap from "../../components/photo-map";
+import Button from "../../components/button";
 import { route } from "preact-router";
 import injectSheet from "react-jss";
 import jsonp from "jsonp";
@@ -24,14 +25,7 @@ const styles = {
     background: "rgba(87, 135, 173, 0.68)",
     fontWeight: "normal"
   },
-  logout: {
-    margin: 10,
-    padding: [ 7, 15 ],
-    fontSize: 14,
-    border: "1px solid #596d82",
-    color: "#fff",
-    background: "#5787ad"
-  }
+  logout: { margin: 10 }
 };
 
 class MapPage extends Component {
@@ -74,13 +68,9 @@ class MapPage extends Component {
       <div className={classes.root}>
         <div className={classes.header}>
           <h1 className={classes.title}>Your photo map</h1>
-          <button
-            type="button"
-            className={classes.logout}
-            onClick={this.onLogoutClick}
-          >
+          <Button className={classes.logout} onClick={this.onLogoutClick}>
             Logout
-          </button>
+          </Button>
         </div>
         <PhotoMap photos={photos} />
       </div>
