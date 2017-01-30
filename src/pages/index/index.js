@@ -17,7 +17,7 @@ const styles = {
   },
   content: { padding: [ "2em" ] },
   link: { color: "#19b1ff", textDecoration: "none" },
-  image: { maxWidth: '100%', borderBottom: "1px solid #bbb" },
+  image: { maxWidth: "100%", borderBottom: "1px solid #bbb" },
   message: { color: "#999", fontSize: 11 },
   title: { marginTop: 0, fontSize: 24, fontWeight: "normal" }
 };
@@ -56,6 +56,9 @@ class App extends Component {
               <a href={privacyUrl} className={classes.link}>
                 Our full Privacy Policy
               </a>
+            </p>
+            <p className={classes.message}>
+              Photo map is <a className={classes.link} href="https://github.com/just-boris/photo-map">Open Source project</a>.
             </p>
             <Button onClick={this.onSignClick}>Sign in to Instagram</Button>
           </div>
