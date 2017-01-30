@@ -11,6 +11,7 @@ const styles = {
   header: {
     position: "absolute",
     top: 0,
+    padding: 10,
     zIndex: 1,
     width: "100%",
     display: "flex",
@@ -18,14 +19,12 @@ const styles = {
     justifyContent: "space-between"
   },
   title: {
-    margin: "auto",
     padding: [ 7, 15 ],
     fontSize: 18,
     color: "#fff",
     background: "rgba(87, 135, 173, 0.68)",
     fontWeight: "normal"
-  },
-  logout: { margin: 10 }
+  }
 };
 
 class MapPage extends Component {
@@ -68,7 +67,7 @@ class MapPage extends Component {
       <div className={classes.root}>
         <div className={classes.header}>
           <h1 className={classes.title}>Your photo map</h1>
-          <Button className={classes.logout} onClick={this.onLogoutClick}>
+          <Button onClick={this.onLogoutClick}>
             Logout
           </Button>
         </div>

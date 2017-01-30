@@ -9,15 +9,15 @@ const privacyUrl = `http://${location.host}${location.pathname}privacy.html`;
 const styles = {
   panel: {
     margin: [ "3em", "auto" ],
-    padding: [ "2em", "3em" ],
-    maxWidth: 300,
+    maxWidth: 500,
     background: "#fff",
     border: "1px solid #ddd",
     borderRadius: 5,
     textAlign: "center"
   },
+  content: { padding: [ "2em" ] },
   link: { color: "#19b1ff", textDecoration: "none" },
-  image: { width: 300, border: "1px solid #bbb" },
+  image: { maxWidth: '100%', borderBottom: "1px solid #bbb" },
   message: { color: "#999", fontSize: 11 },
   title: { marginTop: 0, fontSize: 24, fontWeight: "normal" }
 };
@@ -40,23 +40,25 @@ class App extends Component {
     if (!api.getToken()) {
       return (
         <div className={classes.panel}>
-          <h1 className={classes.title}>
-            Your photos from Instagram on the map
-          </h1>
           <img
             className={classes.image}
             src={require("./welcome.png")}
             alt="Welcome"
           />
-          <p className={classes.message}>
-            To browse your photos, you need to sign in into your Instagram accoount.
+          <div className={classes.content}>
+            <h1 className={classes.title}>
+              Your photos from Instagram on the map
+            </h1>
+            <p className={classes.message}>
+              To browse your photos, you need to sign in into your Instagram accoount.
             We will not save any of your personal data.
-            {"  "}
-            <a href={privacyUrl} className={classes.link}>
-              Our full Privacy Policy
-            </a>
-          </p>
-          <Button onClick={this.onSignClick}>Sign in to Instagram</Button>
+              {"  "}
+              <a href={privacyUrl} className={classes.link}>
+                Our full Privacy Policy
+              </a>
+            </p>
+            <Button onClick={this.onSignClick}>Sign in to Instagram</Button>
+          </div>
         </div>
       );
     }
